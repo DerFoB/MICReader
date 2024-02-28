@@ -1,17 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import cv2
 from matplotlib import pyplot as plt
 import numpy as np
 import math
-
-
-# In[2]:
-
 
 def getDotList(image, t_lower, t_upper):
     """
@@ -31,10 +21,6 @@ def getDotList(image, t_lower, t_upper):
             
     return np.delete(centroids, stain_index, axis=0)
 
-
-# In[3]:
-
-
 def euclideanDistance(point1, point2):
     """
     calculates the Euclidean distance between two points
@@ -44,10 +30,6 @@ def euclideanDistance(point1, point2):
     :return: Euclidean distance (float)
     """ 
     return np.sqrt(np.sum((point1 - point2) ** 2))
-
-
-# In[4]:
-
 
 def calculateClosestDistance(centroid, other_centroids):
     """
@@ -72,10 +54,6 @@ def calculateClosestDistance(centroid, other_centroids):
     
     return shortest_distance
 
-
-# In[5]:
-
-
 def angleInRadians(angle):
     """
     changeing an angle from degrees to radians
@@ -84,10 +62,6 @@ def angleInRadians(angle):
     :return: angle in degrees (float)
     """ 
     return angle * (math.pi / 180.0)
-
-
-# In[6]:
-
 
 def getNextValue(startValue, length, angle):
     """
@@ -100,10 +74,6 @@ def getNextValue(startValue, length, angle):
     """ 
     return [(startValue[0] + length * math.cos(angleInRadians(angle))), 
              (startValue[1] + length * math.sin(angleInRadians(angle)))]
-
-
-# In[7]:
-
 
 def removeDeviations(affectedList, maxDeviation, runs):
     """
@@ -127,10 +97,6 @@ def removeDeviations(affectedList, maxDeviation, runs):
                     affectedList.append(value)
          
     return np.mean(affectedList) 
-
-
-# In[8]:
-
 
 def checkSeperator(mic_mat):
     """
@@ -472,14 +438,6 @@ print("Serial:", print_serial)
 cv2.imwrite('DrawGridTestImage.png',res)
 plt.imshow(res)
 
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
 
 
 
